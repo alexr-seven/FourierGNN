@@ -2,7 +2,7 @@ import argparse
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
-from data.data_loader import Dataset_ECG, Dataset_Dhfm, Dataset_Solar, Dataset_Wiki
+from data.data_loader import Dataset_ECG, Dataset_Dhfm, Dataset_Solar, Dataset_Wiki, Dataset_Capstone
 from model.FourierGNN import FGN
 import time
 import os
@@ -48,6 +48,7 @@ data_parser = {
     'solar':{'root_path':'/data/solar', 'type':'1'},
     'metr':{'root_path':'data/metr.csv', 'type':'1'},
     'wiki':{'root_path':'data/wiki.csv', 'type':'1'},
+    'capstone':{'root_path':'/content/capstone.csv', 'type':'1'}
 }
 
 # data process
@@ -61,7 +62,8 @@ data_dict = {
     'solar': Dataset_Solar,
     'wiki': Dataset_Wiki,
     'electricity': Dataset_ECG,
-    'metr': Dataset_ECG
+    'metr': Dataset_ECG,
+    'capstone': Dataset_Capstone
 }
 
 Data = data_dict[args.data]

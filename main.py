@@ -48,7 +48,7 @@ data_parser = {
     'solar':{'root_path':'/data/solar', 'type':'1'},
     'metr':{'root_path':'data/metr.csv', 'type':'1'},
     'wiki':{'root_path':'data/wiki.csv', 'type':'1'},
-    'capstone':{'root_path':'/content/capstone.csv', 'type':'1'}
+    'capstone':{'root_path': 'data/capstone_for_fouriergnn.csv', 'type':'0'}
 }
 
 # data process
@@ -110,8 +110,8 @@ def validate(model, vali_loader):
     trues = []
     for i, (x, y) in enumerate(vali_loader):
         cnt += 1
-        y = y.float().to("cuda:0")
-        x = x.float().to("cuda:0")
+        y = y.float().to(device)
+        x = x.float().to(device)
         forecast = model(x)
         y = y.permute(0, 2, 1).contiguous()
         loss = forecast_loss(forecast, y)
@@ -135,8 +135,8 @@ def test():
     trues = []
     sne = []
     for index, (x, y) in enumerate(test_dataloader):
-        y = y.float().to("cuda:0")
-        x = x.float().to("cuda:0")
+        y = y.float().to(device)
+        x = x.float().to(device)
         forecast = model(x)
         y = y.permute(0, 2, 1).contiguous()
         forecast = forecast.detach().cpu().numpy()  # .squeeze()
@@ -159,8 +159,8 @@ if __name__ == '__main__':
         cnt = 0
         for index, (x, y) in enumerate(train_dataloader):
             cnt += 1
-            y = y.float().to("cuda:0")
-            x = x.float().to("cuda:0")
+            y = y.float().to(device)
+            x = x.float().to(device)
             forecast = model(x)
             y = y.permute(0, 2, 1).contiguous()
             loss = forecast_loss(forecast, y)

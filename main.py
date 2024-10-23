@@ -48,7 +48,8 @@ data_parser = {
     'solar':{'root_path':'/data/solar', 'type':'1'},
     'metr':{'root_path':'data/metr.csv', 'type':'1'},
     'wiki':{'root_path':'data/wiki.csv', 'type':'1'},
-    'capstone':{'root_path': 'data/capstone_for_fouriergnn.csv', 'type':'0'}
+    'capstone':{'root_path': 'data/capstone_for_fouriergnn.csv', 'type':'0'},
+    'capstone_colab':{'root_path': '/content/data/capstone_for_fouriergnn.csv', 'type':'0'}
 }
 
 # data process

@@ -169,7 +169,7 @@ if __name__ == '__main__':
             print(forecast.shape)
             print(y.shape)
             # y = y.permute(0, 2, 1).contiguous()
-            y = y.permute(0, 1, 0).contiguous()
+            # y = y.permute(0, 1, 0).contiguous()
             loss = forecast_loss(forecast, y)
             loss.backward()
             my_optim.step()

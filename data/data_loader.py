@@ -297,7 +297,7 @@ class Dataset_Capstone(Dataset):
         else:
             data = self.testData[begin:end]
             next_data = self.testData[next_begin:next_end]
-        return data, next_data
+        return data, next_data[0]
 
     def __len__(self):
         # minus the label length

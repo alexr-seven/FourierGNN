@@ -107,6 +107,7 @@ class FGN(nn.Module):
         z = F.softshrink(z, lambd=self.sparsity_threshold)
         z = z + x
         z = torch.view_as_complex(z)
+
         return z
 
     def forward(self, x):

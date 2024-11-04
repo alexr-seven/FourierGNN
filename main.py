@@ -163,7 +163,7 @@ if __name__ == '__main__':
             cnt += 1
             y = y.float().to(device)
             x = x.float().to(device)
-            forecast = model(x)
+            forecast = torch.squeeze(model(x))
 
             print(x.shape)
             print(forecast.shape)

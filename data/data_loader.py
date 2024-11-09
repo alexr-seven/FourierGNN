@@ -254,15 +254,14 @@ class Dataset_Wiki(Dataset):
 
 
 class Dataset_Capstone(Dataset):
-    def __init__(self, root_path, flag, seq_len, pre_len, type, train_ratio, val_ratio):
+    def __init__(self, flag, seq_len, pre_len, type, train_ratio, val_ratio, data):
         assert flag in ['train', 'test', 'val']
-        self.path = root_path
         self.flag = flag
         self.seq_len = seq_len
         self.pre_len = pre_len
         self.train_ratio = train_ratio
         self.val_ratio = val_ratio
-        data = pd.read_csv(root_path)
+        data = data
 
         if type == '1':
             mms = MinMaxScaler(feature_range=(0, 1))
@@ -297,7 +296,7 @@ class Dataset_Capstone(Dataset):
         else:
             data = self.testData[begin:end]
             next_data = self.testData[next_begin:next_end]
-        return data, next_data[0]
+        return data, next_data
 
     def __len__(self):
         # minus the label length

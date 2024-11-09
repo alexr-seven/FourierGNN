@@ -38,7 +38,7 @@ class FGN(nn.Module):
             nn.LeakyReLU(),
             nn.Linear(self.hidden_size, self.pre_length)
         )
-        # self.to('cuda:0')
+        self.to('cuda:0')
 
     def tokenEmb(self, x):
         x = x.unsqueeze(2)
@@ -107,7 +107,6 @@ class FGN(nn.Module):
         z = F.softshrink(z, lambd=self.sparsity_threshold)
         z = z + x
         z = torch.view_as_complex(z)
-
         return z
 
     def forward(self, x):

@@ -254,14 +254,14 @@ class Dataset_Wiki(Dataset):
 
 
 class Dataset_Capstone(Dataset):
-    def __init__(self, flag, seq_len, pre_len, type, train_ratio, val_ratio, data):
+    def __init__(self, flag, seq_len, pre_len, type, train_ratio, val_ratio, df):
         assert flag in ['train', 'test', 'val']
         self.flag = flag
         self.seq_len = seq_len
         self.pre_len = pre_len
         self.train_ratio = train_ratio
         self.val_ratio = val_ratio
-        data = data
+        data = df.copy()
 
         if type == '1':
             mms = MinMaxScaler(feature_range=(0, 1))
